@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout/base :: content">
+
+<div class="container mt-4">
+    <h2>Lista de Clases</h2>
+    <a th:href="@{/clases/nuevo}" class="btn btn-primary mb-3">Registrar Clase</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Horario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="clase : ${clases}">
+                <td th:text="${clase.id}"></td>
+                <td th:text="${clase.nombre}"></td>
+                <td th:text="${clase.horario}"></td>
+                <td>
+                    <a th:href="@{/clases/editar/{id}(id=${clase.id})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/clases/eliminar/{id}(id=${clase.id})}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</html>
+

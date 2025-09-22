@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Escuela de Patinaje</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Hero section */
+        .hero {
+             background-image: url('@{/images/imagen2.jpg}'); /* Fondo desde static/images */
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Card central */
+        .hero-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        /* Botones con efecto hover */
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px 0;
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/index}">Escuela de Patinaje</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/index}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mision}">Misión</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/vision}">Vision</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/servicios}">Servicios</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a class="btn btn-primary btn-custom" th:href="@{/login}">Iniciar sesión</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero section con imagen de fondo -->
+<div class="hero">
+    <div class="hero-card">
+        <h1 class="mb-3">Bienvenid@ a la Escuela de Patinaje</h1>
+        <p class="mb-4">Explora nuestros eventos, servicios y regístrate para más información.</p>
+        <a th:href="@{/login}" class="btn btn-success btn-lg btn-custom">Iniciar sesión</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 Escuela de Patinaje. Todos los derechos reservados.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

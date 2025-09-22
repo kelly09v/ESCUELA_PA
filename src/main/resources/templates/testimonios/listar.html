@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout">
+<head>
+    <title>Lista de Testimonios</title>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Testimonios</h2>
+    <a th:href="@{/testimonios/nuevo}" class="btn btn-success mb-3">➕ Nuevo Testimonio</a>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Comentario</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="testimonio : ${testimonios}">
+            <td th:text="${testimonio.id}"></td>
+            <td th:text="${testimonio.nombre}"></td>
+            <td th:text="${testimonio.comentario}"></td>
+            <td th:text="${testimonio.fecha}"></td>
+            <td>
+                <a th:href="@{/testimonios/editar/{id}(id=${testimonio.id})}" class="btn btn-primary btn-sm">✏️ Editar</a>
+                <a th:href="@{/testimonios/eliminar/{id}(id=${testimonio.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Seguro que deseas eliminar este testimonio?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

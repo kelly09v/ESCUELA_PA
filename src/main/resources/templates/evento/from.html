@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout">
+<head>
+    <title>Formulario Evento</title>
+</head>
+<body>
+<div class="container mt-4">
+    <h2 th:text="${evento.id != null} ? 'Editar Evento' : 'Nuevo Evento'"></h2>
+
+    <form th:action="@{/eventos}" th:object="${evento}" method="post">
+        <div class="mb-3">
+            <label class="form-label">Título</label>
+            <input type="text" th:field="*{titulo}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha</label>
+            <input type="date" th:field="*{fecha}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea th:field="*{descripcion}" class="form-control" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">💾 Guardar</button>
+        <a th:href="@{/eventos}" class="btn btn-secondary">↩️ Volver</a>
+    </form>
+</div>
+</body>
+</html>
+

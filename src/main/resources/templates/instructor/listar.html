@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout">
+<head>
+    <title>Lista de Instructores</title>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Instructores</h2>
+    <a th:href="@{/instructores/nuevo}" class="btn btn-success mb-3">➕ Nuevo Instructor</a>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="instructor : ${instructores}">
+            <td th:text="${instructor.id}"></td>
+            <td th:text="${instructor.nombre}"></td>
+            <td th:text="${instructor.especialidad}"></td>
+            <td th:text="${instructor.email}"></td>
+            <td>
+                <a th:href="@{/instructores/editar/{id}(id=${instructor.id})}" class="btn btn-primary btn-sm">✏️ Editar</a>
+                <a th:href="@{/instructores/eliminar/{id}(id=${instructor.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Seguro que deseas eliminar este instructor?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

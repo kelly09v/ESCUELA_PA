@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: layout">
+<head>
+    <title>Lista de Eventos</title>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Eventos</h2>
+    <a th:href="@{/eventos/nuevo}" class="btn btn-success mb-3">➕ Nuevo Evento</a>
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="evento : ${eventos}">
+            <td th:text="${evento.id}"></td>
+            <td th:text="${evento.titulo}"></td>
+            <td th:text="${evento.fecha}"></td>
+            <td th:text="${evento.descripcion}"></td>
+            <td>
+                <a th:href="@{/eventos/editar/{id}(id=${evento.id})}" class="btn btn-primary btn-sm">✏️ Editar</a>
+                <a th:href="@{/eventos/eliminar/{id}(id=${evento.id})}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Seguro que deseas eliminar este evento?')">🗑️ Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

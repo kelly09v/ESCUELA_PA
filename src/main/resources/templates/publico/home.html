@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout/base :: *">
+<body>
+<div th:fragment="contenido">
+    <h1 class="text-center">Bienvenido a la Escuela de Patinaje</h1>
+    <p class="text-center">Nuestra misión es formar deportistas con disciplina y pasión.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Servicios</h3>
+            <ul>
+                <li>Clases de iniciación</li>
+                <li>Entrenamientos avanzados</li>
+                <li>Eventos deportivos</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h3>Próximos Eventos</h3>
+            <ul>
+                <li>Competencia local - 20/09/2025</li>
+                <li>Exhibición anual - 10/12/2025</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
