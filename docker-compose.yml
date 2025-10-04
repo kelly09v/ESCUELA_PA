@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_escuela_patinaje
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: escuela_patinaje
+      MYSQL_USER: userescuelapatinaje
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3307:3306"   # Desde tu PC conectas en localhost:3307
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "userescuelapatinaje", "-p123456"]
+      timeout: 20s
+      retries: 10
+      interval: 5s
+      start_period: 30s
+
+  app:
+    build: .
+    container_name: app_escuela_patinaje
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/escuela_patinaje?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: userescuelapatinaje
+      SPRING_DATASOURCE_PASSWORD: 123456
+
+volumes:
+  mysql_data:
