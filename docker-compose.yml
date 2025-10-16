@@ -10,7 +10,7 @@ services:
       MYSQL_USER: userescuelapatinaje
       MYSQL_PASSWORD: 123456
     ports:
-      - "3307:3306"   # Desde tu PC conectas en localhost:3307
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -35,3 +35,4 @@ services:
 
 volumes:
   mysql_data:
+
